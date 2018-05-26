@@ -13,4 +13,8 @@ class DriverPolicy < ApplicationPolicy
     true
   end
 
+  def destroy?
+    true
+  end
+
 end
