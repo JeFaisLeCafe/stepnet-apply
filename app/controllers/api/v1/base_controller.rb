@@ -1,6 +1,7 @@
 # app/controllers/api/v1/base_controller.rb
 class Api::V1::BaseController < ActionController::Base
-  acts_as_token_authentication_handler_for User, except: [ :index, :show ]
+  acts_as_token_authentication_handler_for User
+  skip_before_action :verify_authenticity_token
   include Pundit
 
   after_action :verify_authorized, except: :index, unless: :skip_pundit?

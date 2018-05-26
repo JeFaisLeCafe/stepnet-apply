@@ -5,4 +5,12 @@ class DriverPolicy < ApplicationPolicy
     end
   end
 
+  def update?
+    record.user == user
+  end
+
+  def create?
+    true
+  end
+
 end

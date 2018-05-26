@@ -8,6 +8,7 @@ json.driver do
     json.registration @driver.vehicule.registration
     json.km @driver.vehicule.km
   end
+  json.creator @driver.user
 end
 #    @driver, :id, :firstname, :lastname
 #   }

@@ -17,6 +17,19 @@ class Api::V1::DriversController < Api::V1::BaseController
     end
   end
 
+  def create
+    @driver = Driver.new(driver_params)
+    @driver.user = current_user
+    @driver.company = Company.last
+    @driver.vehicule = Vehicule.last
+    authorize @driver
+    if @driver.save
+      render :show, status: :created
+    else
+      render_error
+    end
+  end
+
   private
 
   def set_driver
@@ -25,10 +38,10 @@ class Api::V1::DriversController < Api::V1::BaseController
   end
 
   def driver_params
-    params.require(:driver).permit(:firstname, :lastname, :phone, :company, :vehicule)
+    params.require(:driver).permit(:firstname, :lastname, :phone)
   end
 
   def render_error
-    render json: { errors: @driver.errors.full_message }, status: :unprocessable_entity
+    render json: { errors: @driver.errors.full_messages }, status: :unprocessable_entity
   end
 end
