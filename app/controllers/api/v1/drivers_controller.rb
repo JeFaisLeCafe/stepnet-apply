@@ -1,4 +1,5 @@
 class Api::V1::DriversController < Api::V1::BaseController
+  acts_as_token_authentication_handler_for User, except: [ :index, :show ]
   before_action :set_driver, only: [ :show, :update ]
 
   def index
@@ -9,7 +10,7 @@ class Api::V1::DriversController < Api::V1::BaseController
   end
 
   def update
-    if @driver.update(:firstname, :lastname, :phone, :company, :vehicule)
+    if @driver.update(driver_params)
       render :show
     else
       render_error
@@ -20,10 +21,11 @@ class Api::V1::DriversController < Api::V1::BaseController
 
   def set_driver
     @driver = Driver.find(params[:id])
+    authorize @driver
   end
 
   def driver_params
-    params.require(:restaurant).permit(:firstname, :lastname, :phone, :company, :vehicule)
+    params.require(:driver).permit(:firstname, :lastname, :phone, :company, :vehicule)
   end
 
   def render_error
