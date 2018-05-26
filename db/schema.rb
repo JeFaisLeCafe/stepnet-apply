@@ -10,9 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2018_05_26_132720) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "drivers", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "phone"
+    t.bigint "company_id"
+    t.bigint "vehicule_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_drivers_on_company_id"
+    t.index ["vehicule_id"], name: "index_drivers_on_vehicule_id"
+  end
+
+  create_table "models", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "vehicules", force: :cascade do |t|
+    t.string "registration"
+    t.float "km"
+    t.bigint "model_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["model_id"], name: "index_vehicules_on_model_id"
+  end
+
+  add_foreign_key "drivers", "companies"
+  add_foreign_key "drivers", "vehicules"
+  add_foreign_key "vehicules", "models"
 end
