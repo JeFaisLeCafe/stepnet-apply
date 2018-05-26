@@ -1,5 +1,14 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+Company.destroy_all
+Model.destroy_all
+Driver.destroy_all
+Vehicule.destroy_all
+User.destroy_all
+
+puts "seed reinitialized"
+
+user = User.create!(email: "johndoe@mail.com", password: "secret")
+puts "#{user.email} created!"
+
 my_company = Company.create!(name: "VTC Luxe", address: "1, rue des Champs Elysées")
 puts "#{my_company.name} created!"
 

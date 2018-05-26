@@ -2,7 +2,7 @@ class Api::V1::DriversController < Api::V1::BaseController
   before_action :set_driver, only: [ :show, :update ]
 
   def index
-    @drivers = Driver.all
+    @drivers = policy_scope(Driver)
   end
 
   def show
