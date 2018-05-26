@@ -16,6 +16,15 @@
 <p>You're now on the homepage, and you have your token displayed. Copy/Paste it somewhere close!</p>
 <p>You're now ready to use the API!</p>
 <p>For exemple, you can go to <a href="http://localhost:3000/api/v1/drivers">http://localhost:3000/api/v1/drivers</a>, it's the index of the drivers</p>
-<p>If yo</p>
+<p>If you want details about 1 driver, you can add a /:id, like that : <a href="http://localhost:3000/api/v1/drivers/5">http://localhost:3000/api/v1/drivers/5</a></p>
+<p><strong>Please, don't use a non-existant id!</strong></p>
+<p>If you want to update a driver, just send a PATCH http request to the #show URL of the target driver (ex: "http://localhost:3000/api/v1/drivers/5").
+You'll need to send your request body in the JSON format, like {"driver": {"firstname": "Jean", "lastname": "Bon"}}</p>
+<p>If you want to create a new driver, just send a similar request to the index URL (http://localhost:3000/api/v1/drivers). <strong>IMPORTANT: You'll need to provide the firstname:, lastname:, phone: (unique number) to create it.</strong></p>
 
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+<h3>Review</h3>
+<p>I hope the application will work as well on your computer than on mine, and that all the desired features will work as intended. It has been a small challenge to code my first API, and this was longer than expected.</p>
+<p>Thank you for your time!</p>
+
+<p><small><i>Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+</i></small></p>
