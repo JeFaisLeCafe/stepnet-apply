@@ -18,6 +18,7 @@
 <p>Email: <strong>johndoe@mail.com</strong></p>
 <p>Password: <strong>secret</strong></p>
 <p>and you can click "Log in"</p>
+<p>You can also create your own account, but you'll have to create a new Driver before accessin the index and show feature</p>
 <p>You're now on the homepage, and you have your token displayed. Copy/Paste it somewhere close!</p>
 <p>You're now ready to use the API!</p>
 
@@ -44,6 +45,12 @@ You'll need to send your request body in the JSON format, like {"driver": {"firs
 <h5>Create</h5>
 
 <p>In the same manner, if you want to create a new driver, just send a similar request to the index URL (http://localhost:3000/api/v1/drivers) with the verb POST. <strong>IMPORTANT: You'll need to provide the firstname:, lastname:, phone: (unique number) to create it.</strong></p>
+<p>curl -i -X POST                                                              \
+     -H 'Content-Type: application/json'                                     \
+     -H 'X-User-Email: pierre@gmail.com'                                      \
+     -H 'X-User-Token: K9wdego235s_KrCBb3z1'                                 \
+     -d '{ "driver": { "firstname": "New first name", "lastname": "new last name", "phone": "06 00 00 00 00" } }' \
+     http://localhost:3000/api/v1/drivers/</p>
 
 <h5>Delete</h5>
 
